@@ -16,15 +16,17 @@ LIBHEADER = libft/includes
 
 OBJDIR = obj
 
-HEADER = fillit.h
+HEADER = includes/
 
-SRC = main.c\
-	  check_validation.c\
-	  actions_with_lists.c\
-	  actions_for_map.c\
-	  solve_fillit.c
+VPATH = src
 
-OBJ = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
+SRC = main\
+	  check_validation\
+	  actions_with_lists\
+	  actions_for_map\
+	  solve_fillit
+
+OBJ = $(addsuffix .o, $(addprefix $(OBJDIR)/, $(SRC)))
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -44,8 +46,8 @@ $(NAME): $(OBJ)
 		@$(CC) $(OBJ) $(LIBFT) -o $@ 
 		@echo "Fillit has been complied!"
 
-$(OBJDIR)/%.o: %.c $(HEADER) $(LIBHEADER) 
-		@$(CC) $(FLAGS) -o $@ -c $< -I$(LIBHEADER)
+$(OBJDIR)/%.o: %.c $(HEADER) $(LIBHEADER)
+		@$(CC) $(FLAGS) -o $@ -c $< -I$(LIBHEADER) -I$(HEADER)
 
 
 clean:

@@ -76,12 +76,8 @@ void	lstclr(t_fil *head)
 
 void	create_list(t_fil **head, char buf[], char latter, ssize_t read_bytes)
 {
-	int		j;
-	char	*tmp;
 	t_fil	*cpy;
 
-	tmp = buf;
-	j = 0;
 	cpy = (t_fil*)malloc(sizeof(t_fil));
 	record_position(cpy, buf, read_bytes);
 	cpy->latter = latter;

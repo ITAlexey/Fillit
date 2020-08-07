@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#define MIN_INT -2147483648
 
 static size_t		ft_digit_len(int nbr)
 {
@@ -35,7 +36,7 @@ char				*ft_itoa(int n)
 	nlen = ft_digit_len(ABC(n));
 	if (flag == 1)
 		nlen++;
-	if (n == -2147483648)
+	if (n == MIN_INT)
 		return (ft_strdup("-2147483648"));
 	if (!(str = ft_strnew(nlen)))
 		return (NULL);

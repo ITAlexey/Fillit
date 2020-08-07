@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#define MAX_LONG 9223372036854775807
+
 int			ft_atoi(const char *str)
 {
 	unsigned long long		nmbr;
@@ -29,7 +31,7 @@ int			ft_atoi(const char *str)
 		nmbr = nmbr * 10 + (*str - '0');
 		str++;
 	}
-	if (nmbr > 9223372036854775807)
+	if (nmbr > MAX_LONG)
 		return (ch == '-' ? 0 : -1);
 	return (ch == '-' ? -nmbr : nmbr);
 }

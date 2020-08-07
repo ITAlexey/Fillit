@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gnl_addlist.c                                      :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dshala <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/03 15:57:13 by dshala            #+#    #+#             */
-/*   Updated: 2019/10/03 16:04:08 by dshala           ###   ########.fr       */
+/*   Created: 2019/09/05 18:27:50 by dshala            #+#    #+#             */
+/*   Updated: 2019/09/16 20:19:08 by dshala           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_gnl	*gnl_addlist(t_gnl **head, t_gnl *new, int const fd)
+void	*ft_memset(void *dest, int ch, size_t n)
 {
-	new->fd_gnl = fd;
-	new->str = NULL;
-	new->next = *head;
-	*head = new;
-	return (*head);
+	unsigned char	*res;
+	size_t			i;
+
+	i = 0;
+	res = (unsigned char*)dest;
+	while (i < n)
+		res[i++] = ch;
+	return (res);
 }

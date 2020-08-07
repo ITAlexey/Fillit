@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dshala <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/03 20:35:31 by dshala            #+#    #+#             */
-/*   Updated: 2019/10/01 10:39:44 by dshala           ###   ########.fr       */
+/*   Created: 2019/09/05 21:24:18 by dshala            #+#    #+#             */
+/*   Updated: 2019/09/16 19:29:02 by dshala           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char const *src)
+void	ft_bzero(void *s, size_t n)
 {
-	unsigned char			*temp;
-	unsigned long			i;
-	unsigned const char		*str;
-
-	i = 0;
-	str = (unsigned char*)src;
-	if (!(temp = (unsigned char*)malloc(ft_strlen(src) + 1)))
-		return (NULL);
-	while (str[i] != 0)
-	{
-		temp[i] = str[i];
-		i++;
-	}
-	temp[i] = '\0';
-	return ((char*)temp);
+	ft_memset(s, 0, n);
 }

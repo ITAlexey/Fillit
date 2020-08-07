@@ -12,9 +12,11 @@
 
 NAME = fillit
 
-INCLUDES = -I ./libft/
+LIBHEADER = libft/includes
 
 OBJDIR = obj
+
+HEADER = fillit.h
 
 SRC = main.c\
 	  check_validation.c\
@@ -30,28 +32,29 @@ LIBFT = libft/libft.a
 
 CC = gcc
 
-all: $(NAME)
-
-$(NAME): obj_dir  $(LIBFT) $(OBJ)
-			$(CC) $(FLAGS) $(OBJ) -o $(NAME) $(LIBFT)
-			echo "Fillit has been complied!"
+all: obj_dir $(LIBFT) $(NAME)
 
 obj_dir:
-	mkdir -p $(OBJDIR)
-
-$(OBJDIR)/%.o: %.c
-			$(CC) $(FLAGS) -o $@ -c $< $(INCLUDES)
+		@mkdir -p $(OBJDIR)
 
 $(LIBFT):
-			make -sC ./libft/
+		@make -sC ./libft/
+
+$(NAME): $(OBJ)
+		@$(CC) $(OBJ) $(LIBFT) -o $@ 
+		@echo "Fillit has been complied!"
+
+$(OBJDIR)/%.o: %.c $(HEADER) $(LIBHEADER) 
+		@$(CC) $(FLAGS) -o $@ -c $< -I$(LIBHEADER)
+
 
 clean:
-			rm -rf $(OBJDIR)
-				make fclean -sC ./libft/
+		@rm -rf $(OBJDIR)
+		@make fclean -sC ./libft/
 
 fclean: clean
-			rm -f $(NAME)
-				make fclean -sC ./libft/
+		@rm -f $(NAME)
+		@make fclean -sC ./libft/
 
 re: fclean all
 

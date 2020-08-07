@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_words.c                                   :+:      :+:    :+:   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dshala <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/16 13:10:00 by dshala            #+#    #+#             */
-/*   Updated: 2019/09/16 15:07:37 by dshala           ###   ########.fr       */
+/*   Created: 2019/09/16 12:48:50 by dshala            #+#    #+#             */
+/*   Updated: 2019/09/16 15:08:32 by dshala           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_count_words(const char *str, int c)
+void	ft_free2darray(void **array)
 {
-	unsigned char	*tmp;
-	unsigned char	ch;
-	size_t			count;
+	int		i;
 
-	count = 0;
-	if (!str)
-		return (count);
-	ch = (unsigned char)c;
-	while (*str)
+	i = 0;
+	if (array != NULL)
 	{
-		if (*str != c)
-		{
-			tmp = (unsigned char*)str;
-			while (*tmp != c && *tmp)
-				tmp++;
-			count++;
-			tmp--;
-			str = (char *)tmp;
-		}
-		str++;
+		while (array[i] != NULL)
+			free(array[i++]);
+		free(array);
 	}
-	return (count);
 }

@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_count_words.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dshala <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/05 21:24:18 by dshala            #+#    #+#             */
-/*   Updated: 2019/09/16 19:29:02 by dshala           ###   ########.fr       */
+/*   Created: 2019/09/16 13:10:00 by dshala            #+#    #+#             */
+/*   Updated: 2019/09/16 15:07:37 by dshala           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#define IN 1
+#define OUT 0
 
-void	ft_bzero(void *s, size_t n)
+size_t		ft_count_words(const char *str, int c)
 {
-	unsigned char	*str;
-	size_t			i;
+	size_t	counter;
+	int		is_word;
 
-	if (n == (size_t)-1)
-		return ;
-	i = 0;
-	str = (unsigned char*)s;
-	while (i < n)
-		str[i++] = '\0';
+	is_word = OUT;
+	counter = 0;
+	if (str != NULL)
+	{
+		while (*str != '\0')
+		{
+			if (*str != c && is_word == OUT)
+			{
+				counter++;
+				is_word = IN;
+			}
+			else if (is_word == IN)
+				is_word = OUT;
+			str++;
+		}
+	}
+	return (counter);
 }

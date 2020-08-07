@@ -18,6 +18,8 @@
 # include <string.h>
 # include <fcntl.h>
 # define ABC(c) (c = c < 0 ? -c : c)
+# define MAX(a, b) (a > b ? a : b)
+# define BUFF_SIZE 17
 
 typedef struct		s_list
 {
@@ -25,13 +27,6 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
-
-typedef struct		s_gnl
-{
-	char			*str;
-	int				fd_gnl;
-	struct s_gnl	*next;
-}					t_gnl;
 
 int					ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);
@@ -41,6 +36,7 @@ int					ft_isascii(int c);
 int					ft_isdigit(int c);
 int					ft_isprint(int c);
 char				*ft_itoa(int n);
+void				ft_free2darray(void **array);
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
@@ -86,7 +82,7 @@ char				*ft_strnew(size_t size);
 char				*ft_strnstr(const char *str, const char *to_find,
 					size_t len);
 char				*ft_strrchr(const char *s, int c);
-char				**ft_strsplit(char const *s, char c);
+char				**ft_strsplit(char const *str, char c);
 char				*ft_strstr(const char *str, const char *to_find);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strtrim(char const *s);
@@ -97,6 +93,5 @@ char				*ft_strlowcase(char *str);
 void				ft_swap(int *a, int *b);
 int					ft_is_prime(size_t nb);
 size_t				ft_count_words(const char *str, int c);
-void				ft_lstclr(t_gnl **head, int const fd);
-t_gnl				*gnl_addlist(t_gnl **head, t_gnl *new, int const fd);
+int					get_next_line(int const fd, char **line);
 #endif

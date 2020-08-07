@@ -11,6 +11,13 @@ Second step is consider processed tetrmaino as block and place them to the given
 - if block can't be placed the previous one is going to be retrived and the current one places at that place. if it fails just repeat the method again.
 - if it impossible to place all tetraminos in the square using the actions above, the area of square should be increased by one and repeat actions for the new square.
 - Repeat these steps until the square is filled.
+
+### Execution
+How to run:
+```
+./fillit [file_name]
+```
+
 ### Team
 - [dshala](https://github.com/ITAlexey/)
 - [tclarita](https://github.com/iles982)

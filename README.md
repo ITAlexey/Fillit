@@ -32,6 +32,20 @@ How to run:
 ....  ..#.  ....  ####
 ....  ...#  ....  ####
 ```
+### Example:
+```
+./fillit test
+```
+
+```
+.AABB..
+AACCB..
+.CC.BDD
+.EE.DD.
+EEFFGG.
+.FFGGHH
+....HH.
+```
 
 ### Team
 - [dshala](https://github.com/ITAlexey/)
